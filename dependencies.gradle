@@ -1,0 +1,40 @@
+ext {
+    versions = [
+            javaVersion       : JavaVersion.VERSION_1_8,
+            kotlinVersion     : '1.3.50',
+            minSdkVersion     : 21,
+            targetSdkVersion  : 28,
+            compileSdkVersion : 28,
+            buildGradleVersion: '3.5.0',
+            androidXcore      : '1.1.0',
+            lifecycle         : '2.1.0',
+            espresso          : '3.2.0',
+            jUnit             : '4.12',
+            testRunner        : '1.2.0',
+            constraintLayout  : '1.1.3',
+    ]
+
+    language = [
+            kotlinJdk: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlinVersion"
+    ]
+
+    // AndroidX dependencies
+    androidx = [
+            appCompat       : "androidx.appcompat:appcompat:$versions.androidXcore",
+            ktx             : "androidx.core:core-ktx:$versions.androidXcore",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
+    ]
+
+    // Dependencies from Android Jetpack
+    jetpack = [
+            lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
+            lifecycleViewModel : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+    ]
+
+    tests = [
+            junit          : "junit:junit:$versions.jUnit",
+            runner         : "androidx.test:runner:$versions.testRunner",
+            espressoCore   : "androidx.test.espresso:espresso-core:$versions.espresso",
+            espressoIntents: "androidx.test.espresso:espresso-intents:$versions.espresso"
+    ]
+}

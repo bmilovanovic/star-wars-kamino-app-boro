@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="home_planet_image_size">100dp</dimen>
+    <dimen name="home_residents_button_margin">36dp</dimen>
+</resources>
