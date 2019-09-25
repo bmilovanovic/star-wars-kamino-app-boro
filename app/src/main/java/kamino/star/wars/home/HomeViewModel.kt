@@ -57,6 +57,8 @@ class HomeViewModel : ViewModel() {
     }
 
     fun onResidentsClick(context: Context) {
-        ResidentsActivity.startActivity(context)
+        liveData.value?.let {
+            ResidentsActivity.startActivity(context, it.residentUrls)
+        }
     }
 }

@@ -85,8 +85,10 @@ class HomeFragment : Fragment() {
     companion object {
         const val tag = "HomeFragment"
 
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
+        fun newInstance(viewModel: HomeViewModel): HomeFragment {
+            val fragment = HomeFragment()
+            fragment.viewModel = viewModel
+            return fragment
         }
     }
 }

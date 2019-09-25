@@ -11,4 +11,5 @@
     <string name="terrain">Terrain</string>
     <string name="surface_water">Surface water</string>
     <string name="population">Population</string>
+    <string name="resident_name">Resident No. %s</string>
 </resources>

@@ -2,7 +2,9 @@ package kamino.star.wars
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import kamino.star.wars.home.HomeFragment
+import kamino.star.wars.home.HomeViewModel
 
 class HomeActivity : AppCompatActivity() {
 
@@ -13,8 +15,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupFragment() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.fragmentHolder, HomeFragment.newInstance(), HomeFragment.tag)
-        transaction.commit()
+        val fragment = HomeFragment.newInstance(createViewModel())
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentHolder, fragment, HomeFragment.tag)
+            .commit()
+    }
+
+    private fun createViewModel(): HomeViewModel {
+        return ViewModelProviders.of(this).get(HomeViewModel::class.java)
     }
 }

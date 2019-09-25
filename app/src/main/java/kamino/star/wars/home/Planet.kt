@@ -60,7 +60,7 @@ class Planet {
 
     @SerializedName("residents")
     @Expose
-    var residentUrls: List<String> = mutableListOf()
+    var residentUrls: ArrayList<String> = java.util.ArrayList()
 
     var planetAttributes = emptyList<PlanetAttribute>()
 }

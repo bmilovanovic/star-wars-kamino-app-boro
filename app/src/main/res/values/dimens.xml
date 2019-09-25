@@ -8,4 +8,5 @@
     <dimen name="home_image_slider_height">100dp</dimen>
     <dimen name="slide_title_text_size">18sp</dimen>
     <dimen name="slide_title_padding">4dp</dimen>
+    <dimen name="resident_name_vertical_margin">2dp</dimen>
 </resources>

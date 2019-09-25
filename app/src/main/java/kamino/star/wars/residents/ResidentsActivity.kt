@@ -4,7 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import kamino.star.wars.R
+import kamino.star.wars.util.BaseViewModelFactory
+import java.util.*
 
 class ResidentsActivity : AppCompatActivity() {
 
@@ -15,14 +18,28 @@ class ResidentsActivity : AppCompatActivity() {
     }
 
     private fun setupFragment() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.fragmentHolder, ResidentsFragment.newInstance(), ResidentsFragment.tag)
-        transaction.commit()
+        val fragment = ResidentsFragment.newInstance(createViewModel())
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentHolder, fragment, ResidentsFragment.tag)
+            .commit()
+    }
+
+    private fun createViewModel(): ResidentsViewModel {
+        val residentUrls = intent.getStringArrayListExtra(residentUrlsExtraKey)
+        return ViewModelProviders.of(this, BaseViewModelFactory {
+            ResidentsViewModel(residentUrls)
+        }).get(ResidentsViewModel::class.java)
     }
 
     companion object {
-        fun startActivity(context: Context) {
+        const val residentUrlsExtraKey = "resident_urls"
+
+        fun startActivity(context: Context, residentUrls: ArrayList<String>) {
             val intent = Intent(context, ResidentsActivity::class.java)
+            val bundle = Bundle()
+            bundle.putStringArrayList(residentUrlsExtraKey, residentUrls)
+            intent.putExtras(bundle)
             context.startActivity(intent)
         }
     }

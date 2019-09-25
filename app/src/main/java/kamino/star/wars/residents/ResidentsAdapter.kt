@@ -9,9 +9,9 @@ import kamino.star.wars.R
 
 class ResidentsAdapter : RecyclerView.Adapter<ResidentsAdapter.ResidentViewHolder>() {
 
-    private var residents = emptyList<Resident>()
+    private var residents = emptyList<String>()
 
-    fun updateItems(newItems: List<Resident>) {
+    fun updateItems(newItems: List<String>) {
         residents = newItems
         notifyDataSetChanged()
     }
@@ -35,8 +35,10 @@ class ResidentsAdapter : RecyclerView.Adapter<ResidentsAdapter.ResidentViewHolde
         private val residentNameTextView: TextView =
             itemView.findViewById(R.id.residentNameTextView)
 
-        fun bind(data: Resident) {
-            residentNameTextView.text = data.name
+        fun bind(url: String) {
+            val residentNumber = url.substring(url.lastIndexOf("/") + 1, url.length)
+            residentNameTextView.text =
+                residentNameTextView.resources.getString(R.string.resident_name, residentNumber)
         }
     }
 }
