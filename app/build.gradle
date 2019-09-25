@@ -29,6 +29,7 @@ dependencies {
     implementation androidx.appCompat
     implementation androidx.ktx
     implementation androidx.constraintLayout
+    implementation androidx.recyclerView
     implementation jetpack.lifecycleViewModel
     implementation jetpack.lifecycleExtensions
 

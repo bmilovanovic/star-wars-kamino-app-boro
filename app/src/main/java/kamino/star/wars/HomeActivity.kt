@@ -2,12 +2,13 @@ package kamino.star.wars
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import kamino.star.wars.home.HomeFragment
 
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_holding_fragment)
         setupFragment()
     }
 
