@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".residents.ResidentsActivity" />
+        <activity android:name=".residents.ResidentListActivity" />
+        <activity android:name=".residents.details.ResidentDetailsActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

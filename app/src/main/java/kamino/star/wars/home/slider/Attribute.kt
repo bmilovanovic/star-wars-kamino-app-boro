@@ -3,7 +3,7 @@ package kamino.star.wars.home.slider
 import android.graphics.Color
 import androidx.annotation.StringRes
 
-data class PlanetAttribute(@StringRes val textRes: Int, val text: String) {
+data class Attribute(@StringRes val textRes: Int, val text: String) {
 
     val color: Int = niceColors.shuffled().take(1)[0]
 

@@ -22,7 +22,6 @@ class HomeFragment : Fragment() {
     private lateinit var planetImageView: ImageView
     private lateinit var planetNameTextView: TextView
     private lateinit var imageSlider: SliderView
-    private val sliderAdapter = SliderAdapter()
     private lateinit var residentsButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,8 +67,7 @@ class HomeFragment : Fragment() {
     private fun updateUi(planet: Planet) {
         loadImage(planet.imageUrl)
         planetNameTextView.text = getString(R.string.planet_name, upperCase(planet.name))
-        sliderAdapter.updateItems(planet.planetAttributes)
-        imageSlider.sliderAdapter = sliderAdapter
+        imageSlider.sliderAdapter = SliderAdapter(planet.attributes)
     }
 
     private fun upperCase(text: String): String {

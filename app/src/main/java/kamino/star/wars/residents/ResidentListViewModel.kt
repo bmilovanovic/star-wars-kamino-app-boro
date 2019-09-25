@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ResidentsViewModel(private val residentUrls: List<String>) : ViewModel() {
+class ResidentListViewModel(private val residentUrls: List<String>) : ViewModel() {
 
     fun getLiveData(): LiveData<List<String>> {
         val liveData = MutableLiveData<List<String>>()

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_background"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/residentImageFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/home_planet_image_frame_padding"
+        app:layout_constraintBottom_toTopOf="@id/residentNameTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/residentImageView"
+            android:layout_width="@dimen/home_planet_image_size"
+            android:layout_height="@dimen/home_planet_image_size"
+            android:layout_gravity="center"
+            android:contentDescription="@string/planet_image_content_description" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/residentNameTextView"
+        style="@style/PlanetInfoStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/imageSlider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/residentImageFrame" />
+
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/imageSlider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_image_slider_height"
+        android:layout_marginBottom="@dimen/resident_details_slider_margin_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/residentNameTextView"
+        app:sliderAnimationDuration="600"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderAutoCycleEnabled="true"
+        app:sliderCircularHandlerEnabled="true"
+        app:sliderIndicatorSelectedColor="@android:color/transparent"
+        app:sliderIndicatorUnselectedColor="@android:color/transparent"
+        app:sliderScrollTimeInSec="2"
+        app:sliderStartAutoCycle="true" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

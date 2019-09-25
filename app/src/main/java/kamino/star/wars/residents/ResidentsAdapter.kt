@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kamino.star.wars.R
+import kamino.star.wars.residents.details.ResidentDetailsActivity
 
 class ResidentsAdapter : RecyclerView.Adapter<ResidentsAdapter.ResidentViewHolder>() {
 
@@ -34,8 +35,16 @@ class ResidentsAdapter : RecyclerView.Adapter<ResidentsAdapter.ResidentViewHolde
 
         private val residentNameTextView: TextView =
             itemView.findViewById(R.id.residentNameTextView)
+        private lateinit var url: String
+
+        init {
+            residentNameTextView.setOnClickListener {
+                ResidentDetailsActivity.startActivity(it.context, url)
+            }
+        }
 
         fun bind(url: String) {
+            this.url = url
             val residentNumber = url.substring(url.lastIndexOf("/") + 1, url.length)
             residentNameTextView.text =
                 residentNameTextView.resources.getString(R.string.resident_name, residentNumber)

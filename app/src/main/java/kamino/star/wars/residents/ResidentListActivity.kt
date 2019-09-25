@@ -9,7 +9,7 @@ import kamino.star.wars.R
 import kamino.star.wars.util.BaseViewModelFactory
 import java.util.*
 
-class ResidentsActivity : AppCompatActivity() {
+class ResidentListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,25 +18,25 @@ class ResidentsActivity : AppCompatActivity() {
     }
 
     private fun setupFragment() {
-        val fragment = ResidentsFragment.newInstance(createViewModel())
+        val fragment = ResidentListFragment.newInstance(createViewModel())
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragmentHolder, fragment, ResidentsFragment.tag)
+            .replace(R.id.fragmentHolder, fragment, ResidentListFragment.tag)
             .commit()
     }
 
-    private fun createViewModel(): ResidentsViewModel {
+    private fun createViewModel(): ResidentListViewModel {
         val residentUrls = intent.getStringArrayListExtra(residentUrlsExtraKey)
         return ViewModelProviders.of(this, BaseViewModelFactory {
-            ResidentsViewModel(residentUrls)
-        }).get(ResidentsViewModel::class.java)
+            ResidentListViewModel(residentUrls)
+        }).get(ResidentListViewModel::class.java)
     }
 
     companion object {
         const val residentUrlsExtraKey = "resident_urls"
 
         fun startActivity(context: Context, residentUrls: ArrayList<String>) {
-            val intent = Intent(context, ResidentsActivity::class.java)
+            val intent = Intent(context, ResidentListActivity::class.java)
             val bundle = Bundle()
             bundle.putStringArrayList(residentUrlsExtraKey, residentUrls)
             intent.putExtras(bundle)

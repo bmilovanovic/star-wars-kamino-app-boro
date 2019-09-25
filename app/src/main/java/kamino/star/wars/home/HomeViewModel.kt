@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kamino.star.wars.R
-import kamino.star.wars.home.slider.PlanetAttribute
+import kamino.star.wars.home.slider.Attribute
 import kamino.star.wars.network.Network
-import kamino.star.wars.residents.ResidentsActivity
+import kamino.star.wars.residents.ResidentListActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,15 +41,15 @@ class HomeViewModel : ViewModel() {
     }
 
     private fun parseAttributes(planet: Planet) {
-        val list = mutableListOf<PlanetAttribute>()
-        list.add(PlanetAttribute(R.string.rotation_period, planet.rotationPeriod.toString()))
-        list.add(PlanetAttribute(R.string.orbital_period, planet.orbitalPeriod.toString()))
-        list.add(PlanetAttribute(R.string.diameter, planet.diameter.toString()))
-        list.add(PlanetAttribute(R.string.climate, planet.climate))
-        list.add(PlanetAttribute(R.string.gravity, planet.gravity))
-        list.add(PlanetAttribute(R.string.surface_water, planet.surfaceWater.toString()))
-        list.add(PlanetAttribute(R.string.population, planet.population.toString()))
-        planet.planetAttributes = list
+        val list = mutableListOf<Attribute>()
+        list.add(Attribute(R.string.rotation_period, planet.rotationPeriod.toString()))
+        list.add(Attribute(R.string.orbital_period, planet.orbitalPeriod.toString()))
+        list.add(Attribute(R.string.diameter, planet.diameter.toString()))
+        list.add(Attribute(R.string.climate, planet.climate))
+        list.add(Attribute(R.string.gravity, planet.gravity))
+        list.add(Attribute(R.string.surface_water, planet.surfaceWater.toString()))
+        list.add(Attribute(R.string.population, planet.population.toString()))
+        planet.attributes = list
     }
 
     fun failed() {
@@ -58,7 +58,7 @@ class HomeViewModel : ViewModel() {
 
     fun onResidentsClick(context: Context) {
         liveData.value?.let {
-            ResidentsActivity.startActivity(context, it.residentUrls)
+            ResidentListActivity.startActivity(context, it.residentUrls)
         }
     }
 }

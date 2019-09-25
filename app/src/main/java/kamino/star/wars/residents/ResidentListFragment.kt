@@ -9,9 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import kamino.star.wars.R
 
-class ResidentsFragment : Fragment() {
+class ResidentListFragment : Fragment() {
 
-    private lateinit var viewModel: ResidentsViewModel
+    private lateinit var viewModel: ResidentListViewModel
     private lateinit var residentsList: RecyclerView
     private val residentsAdapter = ResidentsAdapter()
 
@@ -20,7 +20,7 @@ class ResidentsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_residents, container, false)
+        return inflater.inflate(R.layout.fragment_resident_list, container, false)
     }
 
     override fun onViewCreated(root: View, savedInstanceState: Bundle?) {
@@ -39,10 +39,10 @@ class ResidentsFragment : Fragment() {
     }
 
     companion object {
-        const val tag = "ResidentsFragment"
+        const val tag = "ResidentListFragment"
 
-        fun newInstance(viewModel: ResidentsViewModel): ResidentsFragment {
-            val fragment = ResidentsFragment()
+        fun newInstance(viewModel: ResidentListViewModel): ResidentListFragment {
+            val fragment = ResidentListFragment()
             fragment.viewModel = viewModel
             return fragment
         }

@@ -9,14 +9,8 @@ import com.smarteist.autoimageslider.SliderViewAdapter
 import kamino.star.wars.R
 
 
-class SliderAdapter : SliderViewAdapter<SliderAdapter.SliderAdapterVH>() {
-
-    private var items = emptyList<PlanetAttribute>()
-
-    fun updateItems(newItems: List<PlanetAttribute>) {
-        items = newItems
-        notifyDataSetChanged()
-    }
+class SliderAdapter(private val items: List<Attribute>) :
+    SliderViewAdapter<SliderAdapter.SliderAdapterVH>() {
 
     override fun getCount(): Int {
         return items.size
@@ -39,7 +33,7 @@ class SliderAdapter : SliderViewAdapter<SliderAdapter.SliderAdapterVH>() {
             view.findViewById(R.id.slideDescriptionTextView)
         private var slideTitleTextView: TextView = view.findViewById(R.id.slideTitleTextView)
 
-        fun bind(data: PlanetAttribute) {
+        fun bind(data: Attribute) {
             slideLayout.setBackgroundColor(data.color)
             slideDescriptionTextView.setText(data.textRes)
             slideTitleTextView.text = data.text
