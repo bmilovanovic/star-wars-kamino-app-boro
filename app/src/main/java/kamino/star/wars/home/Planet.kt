@@ -63,4 +63,6 @@ class Planet {
     var residentUrls: ArrayList<String> = java.util.ArrayList()
 
     var attributes = emptyList<Attribute>()
+
+    var isLiked: Boolean = false
 }

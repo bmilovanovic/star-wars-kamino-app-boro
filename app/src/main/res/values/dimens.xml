@@ -10,4 +10,6 @@
     <dimen name="slide_title_padding">4dp</dimen>
     <dimen name="resident_name_vertical_margin">2dp</dimen>
     <dimen name="resident_details_slider_margin_bottom">24dp</dimen>
+    <dimen name="home_like_count_text_size">34dp</dimen>
+    <dimen name="home_like_icon_margin_end">8dp</dimen>
 </resources>

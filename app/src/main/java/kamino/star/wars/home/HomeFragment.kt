@@ -21,6 +21,8 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var planetImageView: ImageView
     private lateinit var planetNameTextView: TextView
+    private lateinit var likeIcon: ImageView
+    private lateinit var likeCountTextView: TextView
     private lateinit var imageSlider: SliderView
     private lateinit var residentsButton: Button
 
@@ -41,6 +43,8 @@ class HomeFragment : Fragment() {
         planetImageView = root.findViewById(R.id.planetImageView)
         setPlanetImageExpand()
         planetNameTextView = root.findViewById(R.id.planetNameTextView)
+        likeIcon = root.findViewById(R.id.likeIcon)
+        likeCountTextView = root.findViewById(R.id.likeCountTextView)
         imageSlider = root.findViewById(R.id.imageSlider)
         residentsButton = root.findViewById(R.id.residentsButton)
         residentsButton.setOnClickListener {
@@ -64,9 +68,23 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun updateLikeIcon(isLiked: Boolean) {
+        if (isLiked) {
+            likeIcon.setImageResource(R.drawable.ic_thumb_up_24px)
+            likeIcon.setOnClickListener(null)
+        } else {
+            likeIcon.setImageResource(R.drawable.ic_thumb_up_outlined_24px)
+            likeIcon.setOnClickListener {
+                viewModel.onLikeClick(it.context)
+            }
+        }
+    }
+
     private fun updateUi(planet: Planet) {
         loadImage(planet.imageUrl)
         planetNameTextView.text = getString(R.string.planet_name, upperCase(planet.name))
+        updateLikeIcon(planet.isLiked)
+        likeCountTextView.text = planet.likes.toString()
         imageSlider.sliderAdapter = SliderAdapter(planet.attributes)
     }
 

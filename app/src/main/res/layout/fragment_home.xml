@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/home_background"
@@ -10,11 +11,13 @@
         android:id="@+id/residentsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/home_residents_button_margin"
+        android:layout_marginStart="@dimen/home_residents_button_margin"
+        android:layout_marginEnd="@dimen/home_residents_button_margin"
         android:text="@string/residents_list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageSlider" />
 
     <FrameLayout
         android:id="@+id/planetImageFrame"
@@ -35,12 +38,37 @@
             android:contentDescription="@string/planet_image_content_description" />
     </FrameLayout>
 
+    <ImageView
+        android:id="@+id/likeIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/home_like_icon_margin_end"
+        android:src="@drawable/ic_thumb_up_24px"
+        app:layout_constraintBottom_toTopOf="@id/imageSlider"
+        app:layout_constraintEnd_toStartOf="@id/likeCountTextView"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/planetNameTextView"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/likeCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/home_like_count_text_size"
+        app:layout_constraintBottom_toTopOf="@id/imageSlider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/likeIcon"
+        app:layout_constraintTop_toBottomOf="@id/planetNameTextView"
+        tools:ignore="SpUsage" />
+
     <TextView
         android:id="@+id/planetNameTextView"
         style="@style/PlanetInfoStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/imageSlider"
+        app:layout_constraintBottom_toTopOf="@+id/likeIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/planetImageFrame" />
@@ -52,7 +80,7 @@
         app:layout_constraintBottom_toTopOf="@+id/residentsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/planetNameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/likeIcon"
         app:sliderAnimationDuration="600"
         app:sliderAutoCycleDirection="back_and_forth"
         app:sliderAutoCycleEnabled="true"

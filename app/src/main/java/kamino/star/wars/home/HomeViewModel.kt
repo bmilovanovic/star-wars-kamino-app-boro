@@ -1,18 +1,21 @@
 package kamino.star.wars.home
 
+import android.app.Application
 import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import kamino.star.wars.R
 import kamino.star.wars.home.slider.Attribute
+import kamino.star.wars.network.LikeResult
 import kamino.star.wars.network.Network
 import kamino.star.wars.residents.ResidentListActivity
+import kamino.star.wars.util.PreferencesHelper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(app: Application) : AndroidViewModel(app) {
 
     private val liveData = MutableLiveData<Planet>()
 
@@ -28,6 +31,7 @@ class HomeViewModel : ViewModel() {
             override fun onResponse(call: Call<Planet>, response: Response<Planet>) {
                 response.body()?.let { planet ->
                     parseAttributes(planet)
+                    setLikeStatus(planet)
                     liveData.value = planet
                 } ?: Runnable {
                     failed()
@@ -56,9 +60,33 @@ class HomeViewModel : ViewModel() {
         // Inform UI via state live data that network failed
     }
 
+    private fun setLikeStatus(planet: Planet) {
+        planet.isLiked = PreferencesHelper.isLiked(getApplication())
+    }
+
     fun onResidentsClick(context: Context) {
         liveData.value?.let {
             ResidentListActivity.startActivity(context, it.residentUrls)
         }
+    }
+
+    fun onLikeClick(context: Context) {
+        Network.starWarsApi.likePlanet().enqueue(object : Callback<LikeResult> {
+            override fun onResponse(call: Call<LikeResult>, response: Response<LikeResult>) {
+                response.body()?.let { likeResult ->
+                    PreferencesHelper.setLiked(context)
+                    val planet = liveData.value
+                    planet?.let {
+                        planet.likes = likeResult.likeCount
+                        planet.isLiked = true
+                        liveData.value = planet
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<LikeResult>, t: Throwable) {
+                failed()
+            }
+        })
     }
 }
