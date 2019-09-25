@@ -11,7 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
+import com.smarteist.autoimageslider.SliderView
 import kamino.star.wars.R
+import kamino.star.wars.home.slider.SliderAdapter
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -19,6 +21,8 @@ class HomeFragment : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var planetImageView: ImageView
     private lateinit var planetNameTextView: TextView
+    private lateinit var imageSlider: SliderView
+    private val sliderAdapter = SliderAdapter()
     private lateinit var residentsButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +42,7 @@ class HomeFragment : Fragment() {
         planetImageView = root.findViewById(R.id.planetImageView)
         setPlanetImageExpand()
         planetNameTextView = root.findViewById(R.id.planetNameTextView)
+        imageSlider = root.findViewById(R.id.imageSlider)
         residentsButton = root.findViewById(R.id.residentsButton)
         residentsButton.setOnClickListener {
             viewModel.onResidentsClick(residentsButton.context)
@@ -63,6 +68,8 @@ class HomeFragment : Fragment() {
     private fun updateUi(planet: Planet) {
         loadImage(planet.imageUrl)
         planetNameTextView.text = getString(R.string.planet_name, upperCase(planet.name))
+        sliderAdapter.updateItems(planet.planetAttributes)
+        imageSlider.sliderAdapter = sliderAdapter
     }
 
     private fun upperCase(text: String): String {

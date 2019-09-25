@@ -35,6 +35,7 @@ dependencies {
     implementation thirdParty.retrofit
     implementation thirdParty.gson
     implementation thirdParty.glide
+    implementation thirdParty.imageSlider
 
     testImplementation tests.junit
     testImplementation tests.runner

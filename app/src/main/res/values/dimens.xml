@@ -4,6 +4,8 @@
     <dimen name="home_residents_button_margin">36dp</dimen>
     <dimen name="resident_view_holder_padding">16dp</dimen>
     <dimen name="home_planet_image_frame_padding">4dp</dimen>
-    <dimen name="planet_info_margin">16dp</dimen>
     <dimen name="image_dialog_padding">16dp</dimen>
+    <dimen name="home_image_slider_height">100dp</dimen>
+    <dimen name="slide_title_text_size">18sp</dimen>
+    <dimen name="slide_title_padding">4dp</dimen>
 </resources>

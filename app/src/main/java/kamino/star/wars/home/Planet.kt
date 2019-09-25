@@ -2,6 +2,7 @@ package kamino.star.wars.home
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kamino.star.wars.home.slider.PlanetAttribute
 
 class Planet {
 
@@ -60,4 +61,6 @@ class Planet {
     @SerializedName("residents")
     @Expose
     var residentUrls: List<String> = mutableListOf()
+
+    var planetAttributes = emptyList<PlanetAttribute>()
 }

@@ -3,4 +3,12 @@
     <string name="planet_image_content_description">A Camino planet</string>
     <string name="residents_list">Residents list</string>
     <string name="planet_name">Planet: %s</string>
+    <string name="rotation_period">Rotation period</string>
+    <string name="orbital_period">Orbital period</string>
+    <string name="diameter">Diameter</string>
+    <string name="climate">Climate</string>
+    <string name="gravity">Gravity</string>
+    <string name="terrain">Terrain</string>
+    <string name="surface_water">Surface water</string>
+    <string name="population">Population</string>
 </resources>
