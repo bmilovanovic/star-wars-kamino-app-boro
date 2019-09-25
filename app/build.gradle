@@ -38,7 +38,7 @@ dependencies {
     implementation thirdParty.imageSlider
 
     testImplementation tests.junit
-    testImplementation tests.runner
+    androidTestImplementation tests.runner
     androidTestImplementation tests.espressoCore
     androidTestImplementation tests.espressoIntents
 }
