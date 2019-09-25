@@ -2,4 +2,5 @@
     <string name="app_name">Star Wars Kamino app</string>
     <string name="planet_image_content_description">A Camino planet</string>
     <string name="residents_list">Residents list</string>
+    <string name="planet_name">Planet: %s</string>
 </resources>

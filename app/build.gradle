@@ -32,6 +32,9 @@ dependencies {
     implementation androidx.recyclerView
     implementation jetpack.lifecycleViewModel
     implementation jetpack.lifecycleExtensions
+    implementation thirdParty.retrofit
+    implementation thirdParty.gson
+    implementation thirdParty.glide
 
     testImplementation tests.junit
     testImplementation tests.runner
